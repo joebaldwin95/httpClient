@@ -10,25 +10,19 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 public class httpRequest {
-
+	
 	public httpRequest() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public static void main(String[] args) throws Exception{
 			httpGet("http://jsonplaceholder.typicode.com","/posts/1");
 			sendPost("https://selfsolve.apple.com/wcResults.do","sn=C02G8416DRJM&cn=&locale=&caller=&num=12345");
 			
 	}
-<<<<<<< HEAD
 	
 	public static void httpGet(String passedUrl, String passedParams) throws IOException {
 		
-=======
-
-	public static void httpGet(){
-
->>>>>>> origin/master
 		try {
 			//Set URL + Request Params
 			String reqUrl = passedUrl;
@@ -37,7 +31,7 @@ public class httpRequest {
 			System.out.println("Params being passed in request: " + params);
 			reqUrl = reqUrl + "/?" + params;
 			System.out.println("Full Request Url: " + reqUrl);
-
+			
 			//Creates URL Object and opens a HTTP Connection at the URL
 			URL obj = new URL(reqUrl);
 			HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
@@ -52,7 +46,7 @@ public class httpRequest {
 			int responseCode = connection.getResponseCode();
 			System.out.println("\nSending 'GET' request to URL : " + reqUrl);
 			System.out.println("Response Code : " + responseCode);
-
+			
 			//Receive Response
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(connection.getInputStream()));
@@ -63,7 +57,7 @@ public class httpRequest {
 				response.append(inputLine);
 			}
 			in.close();
-
+			
 			//Close Connection To URL
 			connection.disconnect();
 
@@ -71,7 +65,6 @@ public class httpRequest {
 			System.out.println("\n---BEGIN RESPONSE---");
 			System.out.println(response.toString());
 			System.out.println("---END RESPONSE---");
-<<<<<<< HEAD
 			
 			String responseString = response.toString();
 			
@@ -79,26 +72,15 @@ public class httpRequest {
 			
 		} 
 		
-=======
-
-		}
-
->>>>>>> origin/master
 		catch (Exception getException) {
 			System.out.println("An exception was thrown during execution");
 			getException.printStackTrace();
 		}
-
+		
 	}
-<<<<<<< HEAD
 	
 	public static void sendPost(String passedUrl, String passedParams) throws Exception {
 			
-=======
-
-	public static void sendPost() throws Exception {
-
->>>>>>> origin/master
 			try {
 				//Set URL + Create Connection
 				String reqUrl = passedUrl;
@@ -109,22 +91,17 @@ public class httpRequest {
 				connection.setRequestMethod("POST");
 				connection.setRequestProperty("User-Agent", "Mozilla/5.0");
 				connection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-
+				
 				//Set Params
-<<<<<<< HEAD
 				String urlParameters = passedParams;
 				
-=======
-				String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
-
->>>>>>> origin/master
 				// Send Request with Params
 				connection.setDoOutput(true);
 				DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 				wr.writeBytes(urlParameters);
 				wr.flush();
 				wr.close();
-
+				
 				//Feedback to Console
 				int responseCode = connection.getResponseCode();
 				System.out.println("\nSending 'POST' request to URL : " + reqUrl);
@@ -140,13 +117,13 @@ public class httpRequest {
 					response.append(inputLine);
 				}
 				in.close();
-
+				
 				//Print Response
 				System.out.println("\n--BEGIN RESPONSE---");
 				System.out.println(response.toString());
 				System.out.println("---END RESPONSE---");
-			}
-
+			} 
+			
 			catch (Exception postException) {
 				System.out.println("Put a USEFUL error message here");
 				postException.printStackTrace();
