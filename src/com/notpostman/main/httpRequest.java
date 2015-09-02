@@ -16,17 +16,17 @@ public class httpRequest {
 	}
 	
 	public static void main(String[] args) throws Exception{
-			//Get commented out as test URL appears to be down
-			//httpGet();
-			sendPost();
+			httpGet("http://jsonplaceholder.typicode.com","/posts/1");
+			sendPost("https://selfsolve.apple.com/wcResults.do","sn=C02G8416DRJM&cn=&locale=&caller=&num=12345");
+			
 	}
 	
-	public static void httpGet() throws IOException {
+	public static void httpGet(String passedUrl, String passedParams) throws IOException {
 		
 		try {
 			//Set URL + Request Params
-			String reqUrl = "http://validate.jsontest.com";
-			String params = "json={\"key\":\"value\"}";
+			String reqUrl = passedUrl;
+			String params = passedParams;
 			System.out.println("URL Being Requested: " + reqUrl);
 			System.out.println("Params being passed in request: " + params);
 			reqUrl = reqUrl + "/?" + params;
@@ -66,6 +66,10 @@ public class httpRequest {
 			System.out.println(response.toString());
 			System.out.println("---END RESPONSE---");
 			
+			String responseString = response.toString();
+			
+			//return responseString;
+			
 		} 
 		
 		catch (Exception getException) {
@@ -75,11 +79,11 @@ public class httpRequest {
 		
 	}
 	
-	public static void sendPost() throws Exception {
+	public static void sendPost(String passedUrl, String passedParams) throws Exception {
 			
 			try {
 				//Set URL + Create Connection
-				String reqUrl = "https://selfsolve.apple.com/wcResults.do";
+				String reqUrl = passedUrl;
 				URL url = new URL(reqUrl);
 				HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
@@ -89,7 +93,7 @@ public class httpRequest {
 				connection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 				
 				//Set Params
-				String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
+				String urlParameters = passedParams;
 				
 				// Send Request with Params
 				connection.setDoOutput(true);

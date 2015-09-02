@@ -4,14 +4,23 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JButton;
-import javax.swing.JTextPane;
+
+import javax.swing.JRadioButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 
 public class NotPostmanUI {
 
 	private JFrame frmNotpostmanV;
 	private JTextField txtEnterUrlHere;
+	private JTextField textField;
+	private JTextField txtEnterUrlHere_1;
+	private JTextField txtEnterAnyParams;
 
 	/**
 	 * Launch the application.
@@ -42,23 +51,61 @@ public class NotPostmanUI {
 	private void initialize() {
 		frmNotpostmanV = new JFrame();
 		frmNotpostmanV.setTitle("NotPostman v0.1");
-		frmNotpostmanV.setBounds(100, 100, 450, 300);
+		frmNotpostmanV.setBounds(100, 100, 450, 290);
 		frmNotpostmanV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmNotpostmanV.getContentPane().setLayout(new MigLayout("", "[grow]", "[][grow]"));
+		frmNotpostmanV.getContentPane().setLayout(null);
 		
-		txtEnterUrlHere = new JTextField();
-		txtEnterUrlHere.setToolTipText("You should enter the URL you intend to GET from here.");
-		txtEnterUrlHere.setText("Enter URL Here");
-		frmNotpostmanV.getContentPane().add(txtEnterUrlHere, "flowx,cell 0 0,alignx left");
-		txtEnterUrlHere.setColumns(27);
+		txtEnterUrlHere_1 = new JTextField();
+		txtEnterUrlHere_1.setText("Enter URL Here");
+		txtEnterUrlHere_1.setBounds(6, 6, 438, 28);
+		frmNotpostmanV.getContentPane().add(txtEnterUrlHere_1);
+		txtEnterUrlHere_1.setColumns(10);
 		
-		JButton btnGo = new JButton("Go");
-		frmNotpostmanV.getContentPane().add(btnGo, "cell 0 0");
+		JRadioButton rdbtnHttp = new JRadioButton("HTTP");
+		rdbtnHttp.setBounds(6, 68, 65, 23);
+		frmNotpostmanV.getContentPane().add(rdbtnHttp);
 		
-		JTextPane txtpnResponse = new JTextPane();
-		txtpnResponse.setText("Response...");
-		txtpnResponse.setEditable(false);
-		frmNotpostmanV.getContentPane().add(txtpnResponse, "cell 0 1,grow");
-	}
+		JRadioButton rdbtnHttps = new JRadioButton("HTTPS");
+		rdbtnHttps.setBounds(78, 68, 72, 23);
+		frmNotpostmanV.getContentPane().add(rdbtnHttps);
+		
+		txtEnterAnyParams = new JTextField();
+		txtEnterAnyParams.setText("Enter Any Params Here");
+		txtEnterAnyParams.setBounds(6, 39, 438, 28);
+		frmNotpostmanV.getContentPane().add(txtEnterAnyParams);
+		txtEnterAnyParams.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(159, 68, 103, 27);
+		frmNotpostmanV.getContentPane().add(comboBox);
+		comboBox.addItem("GET");
+		comboBox.addItem("POST");
+		
+		JButton btnGo = new JButton("GO");
+		btnGo.setBounds(274, 67, 117, 29);
+		frmNotpostmanV.getContentPane().add(btnGo);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(16, 103, 417, 151);
+		frmNotpostmanV.getContentPane().add(textArea);
+		
+		String method = (String) comboBox.getSelectedItem();
+		String formUrl = txtEnterUrlHere_1.getText();
+		String formParams = txtEnterAnyParams.getText();
+		Boolean httpRadio = rdbtnHttp.isSelected();
+		Boolean httpsRadio = rdbtnHttps.isSelected();
+		
+		btnGo.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//Button action goes here
+				//Create request object
+				//Call appropriate method
+				//Set response into text area
+				
+			}
+        });
+	}
 }
