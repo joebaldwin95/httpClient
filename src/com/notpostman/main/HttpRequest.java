@@ -11,17 +11,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpRequest {
 
-	public HttpRequest() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void main(String[] args){
-			sendGet("http://jsonplaceholder.typicode.com","/posts/1");
-			sendPost("https://selfsolve.apple.com/wcResults.do","sn=C02G8416DRJM&cn=&locale=&caller=&num=12345");
+	public HttpRequest()
 
 	}
 
-	public static void sendGet(String passedUrl, String passedParams) {
+	public static String sendGet(String passedUrl, String passedParams) {
 		try {
 			//Set URL + Request Params
 			String reqUrl = passedUrl;
@@ -65,21 +59,18 @@ public class HttpRequest {
 			System.out.println(response.toString());
 			System.out.println("---END RESPONSE---");
 
-			String responseString = response.toString();
-
-			//return responseString;
-
+			return response.toString();
 		}
 
 		catch (Exception getException) {
 			System.out.println("An exception was thrown during execution");
 			getException.printStackTrace();
 		}
-
+		return null;
 	}
 
-	public static void sendPost(String passedUrl, String passedParams) throws Exception {
 
+	public static void sendPost(String passedUrl, String passedParams) throws Exception {
 			try {
 				//Set URL + Create Connection
 				String reqUrl = passedUrl;
@@ -121,13 +112,12 @@ public class HttpRequest {
 				System.out.println("\n--BEGIN RESPONSE---");
 				System.out.println(response.toString());
 				System.out.println("---END RESPONSE---");
+				return response.toString();
 			}
-
-			catch (Exception postException) {
 				System.out.println("Put a USEFUL error message here");
+			catch (Exception postException) {
 				postException.printStackTrace();
 			}
-
+			return null;
 		}
-
 }
