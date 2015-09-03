@@ -11,8 +11,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpRequest {
 
-	public HttpRequest()
-
+	public HttpRequest(){
+		
 	}
 
 	public String sendGet(String passedUrl) {
