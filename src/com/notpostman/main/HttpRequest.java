@@ -15,14 +15,11 @@ public class HttpRequest {
 
 	}
 
-	public static String sendGet(String passedUrl, String passedParams) {
+	public String sendGet(String passedUrl) {
 		try {
 			//Set URL + Request Params
 			String reqUrl = passedUrl;
-			String params = passedParams;
-			System.out.println("URL Being Requested: " + reqUrl);
-			System.out.println("Params being passed in request: " + params);
-			reqUrl = reqUrl + "/?" + params;
+			reqUrl = reqUrl;
 			System.out.println("Full Request Url: " + reqUrl);
 
 			//Creates URL Object and opens a HTTP Connection at the URL
@@ -70,7 +67,7 @@ public class HttpRequest {
 	}
 
 
-	public static void sendPost(String passedUrl, String passedParams) throws Exception {
+	public String sendPost(String passedUrl, String passedParams) throws Exception {
 			try {
 				//Set URL + Create Connection
 				String reqUrl = passedUrl;
@@ -114,7 +111,6 @@ public class HttpRequest {
 				System.out.println("---END RESPONSE---");
 				return response.toString();
 			}
-				System.out.println("Put a USEFUL error message here");
 			catch (Exception postException) {
 				postException.printStackTrace();
 			}

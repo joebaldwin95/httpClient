@@ -22,7 +22,7 @@ public class NotPostmanUI {
 	private JTextField txtEnterUrlHere_1;
 	private JTextField txtEnterAnyParams;
 
-	private HttpRequest requester = new HttpRequest();
+	private HttpRequest requestor = new HttpRequest();
 
 	/**
 	 * Launch the application.
@@ -91,21 +91,25 @@ public class NotPostmanUI {
 		textArea.setBounds(16, 103, 417, 151);
 		frmNotpostmanV.getContentPane().add(textArea);
 
-		String method = (String) comboBox.getSelectedItem();
-		String formUrl = txtEnterUrlHere_1.getText();
-		String formParams = txtEnterAnyParams.getText();
-		Boolean httpRadio = rdbtnHttp.isSelected();
-		Boolean httpsRadio = rdbtnHttps.isSelected();
-
 		btnGo.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e)
+			public void actionPerformed(ActionEvent e){
 				//Button action goes here
 				//Create request object
 				//Call appropriate method
 				//Set response into text area
+				String method = (String) comboBox.getSelectedItem();
+				String formUrl = txtEnterUrlHere_1.getText();
+				String formParams = txtEnterAnyParams.getText();
+				Boolean httpRadio = rdbtnHttp.isSelected();
+				Boolean httpsRadio = rdbtnHttps.isSelected();
 
+				if(method.equals("GET")){
+					requestor.sendGet(formUrl);
+				} else {
+					requestor.sendPost(formUrl, formParams);
+				}
 			}
         });
 	}
