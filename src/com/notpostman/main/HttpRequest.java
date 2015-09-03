@@ -9,9 +9,9 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class httpRequest {
+public class HttpRequest {
 
-	public httpRequest() {
+	public HttpRequest() {
 		// TODO Auto-generated constructor stub
 	}
 
